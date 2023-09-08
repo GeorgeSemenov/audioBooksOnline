@@ -1,0 +1,22 @@
+{
+  "name": "audiobooksonline",
+  "version": "1.0.0",
+  "description": "project for audiobooks online",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GeorgeSemenov/audioBooksOnline.git"
+  },
+  "keywords": [
+    "kek"
+  ],
+  "author": "Goshanbo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeorgeSemenov/audioBooksOnline/issues"
+  },
+  "homepage": "https://github.com/GeorgeSemenov/audioBooksOnline#readme"
+}
