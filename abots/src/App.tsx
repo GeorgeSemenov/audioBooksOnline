@@ -7,23 +7,25 @@ import ReactAudioPlayer from "react-audio-player";
 function App() {
   const [count, setCount] = useState(0);
   let aduioBegining: number,
-    audioDuration: number = 2000;
+    audioDuration: number = 2;
   const player = useRef();
   let audio: HTMLAudioElement;
   useEffect(() => {
     audio = document.getElementById("audio") as HTMLAudioElement;
   }, []);
-
+  let listenCount = 0;
   return (
     <ReactAudioPlayer
       src="https://sds.hugesound.ru/sounds/hugesoundru__kids-4.mp3#t=00:03:26"
       listenInterval={1000}
       controls
-      onPlay={(e) => {
-        aduioBegining = e.timeStamp;
-        console.log(`begining =${aduioBegining}`);
-      }}
+      // onPlay={(e) => {
+      //   aduioBegining = e.timeStamp;
+      //   console.log(`begining =${aduioBegining}`);
+      // }}
       onListen={(e) => {
+        if (listenCount < 1) aduioBegining = e;
+        console.log(aduioBegining);
         console.log(
           `begining + duration = ${aduioBegining + audioDuration} e = ${e}`
         );
@@ -31,6 +33,7 @@ function App() {
           setCount(count + 1);
           console.log(`count = ${count}`);
         }
+        listenCount++;
       }}
       // ref={(element) => {
       //   this.rap = element;
