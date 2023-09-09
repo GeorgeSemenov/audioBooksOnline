@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/GeorgeSemenov/audioBooksOnline/issues"
   },
-  "homepage": "https://github.com/GeorgeSemenov/audioBooksOnline#readme"
+  "homepage": "https://github.com/GeorgeSemenov/audioBooksOnline#readme",
+  "dependencies": {
+    "react-audio-player": "^0.17.0"
+  }
 }
