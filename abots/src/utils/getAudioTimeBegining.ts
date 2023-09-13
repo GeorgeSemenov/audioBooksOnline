@@ -2,11 +2,13 @@ import getCookie from "./getCookie";
 import convertSecondsToStringForAudio from "./convertSecondsToStringForAudio";
 import { IAudioTime } from "./interfaces";
 
-export default function getAudioBegining() {
+export default function getAudioTimeBegining(): IAudioTime {
   const defaultValue: IAudioTime = {
-    stringForSrc: "00-00-00",
+    stringForSrc: "00:00:00",
   };
   return getCookie("listenedTime")
-    ? convertSecondsToStringForAudio(getCookie("listenedTime"))
+    ? {
+        stringForSrc: convertSecondsToStringForAudio(getCookie("listenedTime")),
+      }
     : defaultValue;
 }

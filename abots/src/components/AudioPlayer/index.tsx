@@ -1,24 +1,27 @@
 import AudioPlayer from "react-h5-audio-player";
 import H5AudioPlayer from "react-h5-audio-player";
-import setAudioBegining from "../../utils/setAudioBegining";
-import getAudioBegining from "../../utils/getAudioBegining";
+import getStringForAudioTime from "../../utils/getStringForAudioTime";
 import { useRef } from "react";
 import { IAudioTime } from "../../utils/interfaces";
+import setAudioTimeBeginingInCookies from "../../utils/setAudioTimeBeginingInCookies";
 const book = require("../../audio/book.mp3");
 
 export default function AudioPlayerComponent({
   audioTime,
+  listeningTimeDuration, //time in seconds
+  style,
 }: {
   audioTime: IAudioTime;
+  listeningTimeDuration: number;
+  style?: {};
 }) {
-  let listeningTimeBegining: number,
-    listeningTimeDuration: number = 10; //time in seconds
+  let listeningTimeBegining: number;
   const audioPlayer = useRef<H5AudioPlayer>(null);
-  const yearInSeconds = 60 * 60 * 24 * 30 * 12;
+
   return (
     <AudioPlayer
-      style={{ marginBottom: "15px" }}
-      src={setAudioBegining(book, getAudioBegining())}
+      style={{ ...style }}
+      src={getStringForAudioTime(book, audioTime)}
       onPlay={() => {
         listeningTimeBegining = audioPlayer.current?.audio.current
           ? Math.trunc(audioPlayer.current?.audio.current.currentTime)
@@ -36,9 +39,9 @@ export default function AudioPlayerComponent({
       }}
       onPause={() => {
         if (audioPlayer.current?.audio.current)
-          document.cookie = `listenedTime = ${Math.trunc(
-            audioPlayer.current?.audio.current.currentTime
-          )}; max-age=${yearInSeconds}`;
+          setAudioTimeBeginingInCookies(
+            Math.trunc(audioPlayer.current?.audio.current.currentTime)
+          );
       }}
       ref={audioPlayer}
     />
