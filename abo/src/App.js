@@ -48,8 +48,8 @@ function setAudioBegining(audioUrl, beginFrom) {
   return resultetdUrl;
 }
 
-function getStringForAudio(seconds) {
-  console.log(`getStringForAudio`);
+function convertSecondsToStringForAudio(seconds) {
+  console.log(`convertSecondsToStringForAudio`);
   const pad = (x) => {
     return x < 10 ? `0${x}` : `${x}`;
   };
@@ -61,7 +61,7 @@ function getStringForAudio(seconds) {
 function getAudioBegining() {
   console.log(`getAudioBegining`);
   return getCookie("listenedTime")
-    ? getStringForAudio(getCookie("listenedTime"))
+    ? convertSecondsToStringForAudio(getCookie("listenedTime"))
     : "00:00:00";
 }
 
