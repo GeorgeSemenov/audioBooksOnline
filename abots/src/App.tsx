@@ -11,7 +11,22 @@ import setListeningTimeDurationInCookies from "./utils/setListeningTimeDurationI
 export default function App() {
   useEffect(() => {
     document.title = "(eng)Audio books онлине";
-  });
+
+    const handleButtonClick = (event: KeyboardEvent) => {
+      // Ваша логика обработки события
+      console.log("Нажата кнопка на наушниках");
+      console.log(event);
+    };
+
+    // Добавляем слушатель события для нажатия кнопки на наушниках
+    document.addEventListener("keydown", handleButtonClick);
+
+    // Удаляем слушатель события при размонтировании компонента
+    return () => {
+      document.removeEventListener("keydown", handleButtonClick);
+    };
+  }, []);
+
   const [audioTime, setAudioTime] = useState(getAudioTimeBegining());
   const [listeningTimeDuration, setListeningTimeDuration] = useState(
     getListeningTimeDuration
