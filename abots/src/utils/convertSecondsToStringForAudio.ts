@@ -1,4 +1,6 @@
-export default function convertSecondsToStringForAudio(seconds: number) {
+export default function convertSecondsToStringForAudio(
+  seconds: number
+): string {
   const pad = (x: number) => {
     return x < 10 ? `0${x}` : `${x}`;
   };
