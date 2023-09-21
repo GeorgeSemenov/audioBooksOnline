@@ -7,14 +7,17 @@ import getAudioTimeBegining from "./utils/getAudioTimeBegining";
 import InputTime from "./components/InputTime";
 import getListeningTimeDuration from "./utils/getListeningTimeDuration";
 import setListeningTimeDurationInCookies from "./utils/setListeningTimeDurationInCookies";
+import { hpbBack } from "./utils/constants";
+export { hpbBack } from "./utils/constants";
 
 export default function App() {
   useEffect(() => {
     document.title = "(eng)Audio books онлине";
 
     const handleButtonClick = (event: KeyboardEvent) => {
-      // Ваша логика обработки события
-      console.log("Нажата кнопка на наушниках");
+      if (event.keyCode == hpbBack.keyCode)
+        // Ваша логика обработки события
+        console.log("Нажата кнопка на наушниках");
       console.log(event);
     };
 
